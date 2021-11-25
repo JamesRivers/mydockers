@@ -1,0 +1,20 @@
+version: "2.2"
+services:
+  pgadmin4:
+    hostname: wiki-pgadmin
+    container_name: wiki-pgadmin
+    image: dpage/pgadmin4
+    ports:
+      - "10440:80"
+    networks:
+      - wiki-net
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=imagine
+    volumes:
+      - /pgadmin4/servers.json:/pgadmin4/servers.json:ro
+    restart: unless-stopped
+networks:
+  wiki-net:
+    external: true
+~                     

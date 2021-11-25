@@ -1,0 +1,12 @@
+---
+services:
+  pgadmin:
+    container_name: pgadmin4_container
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: ImagineDB1
+    image: dpage/pgadmin4
+    ports:
+      - "5050:80"
+    restart: always
+version: "3.8"
