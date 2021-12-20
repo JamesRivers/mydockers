@@ -1,0 +1,23 @@
+version: "3.8"
+
+
+services:
+  postgres:
+    hostname: wiki-pg
+    container_name: wiki-pg
+    image: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - wiki-net
+    environment:
+      - POSTGRES_PASSWORD=imagine
+      - POSTGRES_DB=wiki
+      - POSGRES_USER=postgres
+    volumes:
+      - /pg/postgres-data:/var/lib/postgresql/data
+      - /pg/postgres-init:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+networks:
+  wiki-net:
+    external: true

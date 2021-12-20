@@ -1,0 +1,26 @@
+version: "2.2"
+services:
+   wiki:
+    image: requarks/wiki
+    container_name: wiki-js
+    hostname: wiki-js
+    ports:
+      - "80:3000"
+      - "443:3443"
+    networks:
+      - wiki-net
+    environment:
+      - SSL_ACTIVE=true
+      - LETSENCRYPT_DOMAIN=academy-42.com
+      - LETSENCRYPT_EMAIL=admin@admin.com
+      - UPGRADE_COMPANION=1
+      - DB_TYPE=postgres
+      - DB_HOST=wiki-pg
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASS=imagine
+      - DB_NAME=wiki
+    restart: unless-stopped
+networks:
+  wiki-net:
+    external: true

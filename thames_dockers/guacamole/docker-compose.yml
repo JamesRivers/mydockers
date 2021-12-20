@@ -1,0 +1,11 @@
+version: "2"
+services:
+  guacamole:
+    image: oznu/guacamole
+    container_name: guacamole
+    volumes:
+      - /root/guacamole:/config
+    ports:
+      - 9081:8080
+    restart: "unless-stopped"
+~                                    
